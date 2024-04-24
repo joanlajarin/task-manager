@@ -1,4 +1,5 @@
 import './App.css'
+import { Board } from './components/Board.jsx'
 import { DarkModeProvider } from './components/DarkModeContext.jsx'
 import { ToggleSection } from './components/ToggleSection.jsx'
 
@@ -11,33 +12,19 @@ function App() {
 
   return (
     <DarkModeProvider>
-    <section className=''>
-      <a>X</a>
-      <div>
-        Default Board
-      </div>
-      <div>
-        Add new board
-      </div>
-      <ToggleSection/>
-    </section>
-    <section>
-      <div>
-        Backlog(1)
-      </div>
-      <div>
-        In progress(0)
-      </div>
-      <div>
-        In progress(0)
-      </div>
-      <div>
-        In review(0)
-      </div>
-      <div>
-        Completed(0)
-      </div>
-    </section>
+      <div className=' p-[12px] flex gap-[12px]'>
+          <section className=''>
+              <a>X</a>
+              <div>
+                Default Board
+              </div>
+              <div>
+                Add new board
+              </div>
+              <ToggleSection/>
+          </section>
+          <Board/>
+      </div> 
     </DarkModeProvider>
   )
 }

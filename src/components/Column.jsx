@@ -1,5 +1,5 @@
 import Task from "./Task"
-import AddNewTask from './AddNewTask.jsx'
+import {AddNewTask} from './AddNewTask.jsx'
 
 export function Column({ column: { color, title, tasks } }) {
 

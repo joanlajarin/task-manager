@@ -1,30 +1,15 @@
 import './App.css'
-import { Board } from './components/Board.jsx'
+import { TaskManagerApp } from './components/TaskManagerApp.jsx'
 import { DarkModeProvider } from './components/DarkModeContext.jsx'
-import { ToggleSection } from './components/ToggleSection.jsx'
+import { ModalTaskDetailsProvider } from './components/ModalTaskDetailsContext.jsx'
 
 function App() {
 
-
-  const changeDarkMode = () => {
-     console.log(darkMode)
-  }
-
   return (
     <DarkModeProvider>
-      <div className=' p-[12px] flex gap-[12px]'>
-          <section className=''>
-              <a>X</a>
-              <div>
-                Default Board
-              </div>
-              <div>
-                Add new board
-              </div>
-              <ToggleSection/>
-          </section>
-          <Board/>
-      </div> 
+      <ModalTaskDetailsProvider>
+          <TaskManagerApp/>
+      </ModalTaskDetailsProvider>
     </DarkModeProvider>
   )
 }

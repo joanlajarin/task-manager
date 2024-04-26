@@ -1,9 +1,9 @@
 {
     "columns": [
-        {"title": "Backlog", "color": "5aafed", "tasks": [{"title": "Default task", "src": "","tags": [{"title": "Concept", "color": "DEE9FC"}]}]},
-        {"title": "In progress", "color": "edcd5a","tasks": []},
-        {"title": "In review", "color": "d852e7" ,"tasks": []},
-        {"title": "Completed", "color": "52eb55","tasks": []}
+        {"title": "Backlog", "color": "#5aafed", "tasks": [{"title": "Default task", "src": "","tags": [{"title": "Concept", "colorBg": "#DEE9FC", "colorFont" : "#3662E3" }]}]},
+        {"title": "In progress", "color": "#edcd5a","tasks": []},
+        {"title": "In review", "color": "#d852e7" ,"tasks": []},
+        {"title": "Completed", "color": "#52eb55","tasks": []}
     ]
 }
    

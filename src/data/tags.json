@@ -1,0 +1,9 @@
+{
+    "tags": [
+        {"title": "Concept", "colorBg": "#F9E3E2", "colorFont": "#AA2E26"},
+        {"title": "Technical", "colorBg": "#DEE9FC", "colorFont": "#3662E3"},
+        {"title": "Design", "colorBg": "#FDF9C9", "colorFont": "#C18D30"},
+        {"title": "Front-end", "colorBg": "#E2FBE8", "colorFont": "#4CA154"}
+      ]
+}
+   

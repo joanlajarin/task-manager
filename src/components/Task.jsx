@@ -3,15 +3,15 @@ import Tag from './Tag.jsx'
 
 import { DarkModeContext } from './DarkModeContext'
 
-export default function Task({task: {title, source, tags}}){
+export default function Task({task: {title, src, tags}}){
     const {darkMode}  = useContext(DarkModeContext)
 
     return(
     
     <div className={`rounded-lg flex flex-col gap-[12px] p-[12px] ${darkMode ? 'bg-[#191B1F]' : 'bg-[#FEF7EE]'}`}>
-        {source && <img src={source}></img>}
+        {src && <img src={src}></img>}
         <span>{title}</span>
-        {tags.map( tag => <Tag tag={tag}/>)}
+        {tags.map((tag,index)  => <Tag tag={tag} key={index}/>)}
     </div>
     )
 }

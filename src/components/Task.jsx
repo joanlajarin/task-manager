@@ -11,7 +11,9 @@ export default function Task({task: {title, src, tags}}){
     <div className={`rounded-lg flex flex-col gap-[12px] p-[12px] ${darkMode ? 'bg-[#191B1F]' : 'bg-[#FEF7EE]'}`}>
         {src && <img src={src}></img>}
         <span>{title}</span>
-        {tags.map((tag,index)  => <Tag tag={tag} key={index}/>)}
+        <div className='flex gap-[8px]'>
+        { tags.map((tag,index)  => <Tag tag={tag} key={index}/>)}
+        </div>
     </div>
     )
 }

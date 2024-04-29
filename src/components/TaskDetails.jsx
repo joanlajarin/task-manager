@@ -4,9 +4,8 @@ import { ModalTaskDetailsContext } from './ModalTaskDetailsContext.jsx'
 import { useContext, useState } from 'react'
 import Tag from './Tag.jsx'
 import statesJSON from '../data/states.json'
-import tagsJSON from '../data/tags.json';
-
-
+import tagsJSON from '../data/tags.json'
+import {getUniqueId} from '../services/getUniqueID.js'
 
 export function TaskDetails(){
 
@@ -24,14 +23,16 @@ export function TaskDetails(){
     const [tagsSelected, setTagsSelected] = useState(tagsJSON.tags)
 
     const saveTaskDetails = () => {
+        const id = getUniqueId()
+
         const newTask = {
-            "id": 2,
+            "id": id,
             "title": titleTask, 
             "state": statusValue, 
             "src": imgUrl,
-            "tags": [{"title": "Concept", "colorBg": "#DEE9FC", "colorFont" : "#3662E3" }]       
+            "tags": tagsSelected       
          }
-         localStorage.setItem("formData", JSON.stringify(newTask))
+         localStorage.setItem(titleTask + id, JSON.stringify(newTask))
          toggleShowTaskDetails()
     }
 

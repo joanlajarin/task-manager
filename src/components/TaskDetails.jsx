@@ -11,7 +11,10 @@ import tagsJSON from '../data/tags.json';
 export function TaskDetails(){
 
     const {toggleShowTaskDetails} = useContext(ModalTaskDetailsContext)
-    const [imgUrl, setImgUrl] = useState()
+   
+    //task details
+    const [titleTask, setTitleTask] = useState("Add a feature to sort task by priority")
+    const [imgUrl, setImgUrl] = useState("")
     //Status
     const [showStatus, setShowStatus] = useState(false)
     const [statusValue, setStatusValue] = useState("Backlog")
@@ -19,21 +22,32 @@ export function TaskDetails(){
     //Tags
     const [showTags, setShowTags] = useState(false)
     const [tagsSelected, setTagsSelected] = useState(tagsJSON.tags)
-    const [tagsColorBg, setTagsColorBg] = useState("#F9E3E2")
-    const [tagsColorFont, setTagsColorFont] = useState("#AA2E26")
-
 
     const saveTaskDetails = () => {
-        window.alert("Still working on it...")
+        const newTask = {
+            "id": 2,
+            "title": titleTask, 
+            "state": statusValue, 
+            "src": imgUrl,
+            "tags": [{"title": "Concept", "colorBg": "#DEE9FC", "colorFont" : "#3662E3" }]       
+         }
+         localStorage.setItem("formData", JSON.stringify(newTask))
+         toggleShowTaskDetails()
     }
 
     const showStatusDropMenu = () => {
         setShowStatus(!showStatus)
+        setShowTags(false)
     }
 
     const showTagsDropMenu = () => {
         setShowTags(!showTags)
+        setShowStatus(false)
     }
+
+    const handleChange = (event) => setTitleTask(event.target.value) 
+
+
     const selectSatus = (title, color) => {
         setStatusValue(title)
         setStatusColor(color)
@@ -81,7 +95,8 @@ export function TaskDetails(){
                     <input 
                         id='task-name'
                         className='px-[12px] py-[8px] w-full h-[40px] rounded-xl border-[2px] border-[#3A3E44] bg-[#2A2D32]'
-                        value='Add a feature to sort task by priority'
+                        defaultValue={titleTask}
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className=" flex flex-col gap-[12px]">
@@ -134,7 +149,7 @@ export function TaskDetails(){
                                     style={{ color: `${tag.colorFont}`}}>{tag.title}
                                 </span>
                             </button> 
-                        )}
+                            )}
                         </div>
                     </div>
 

@@ -1,0 +1,6 @@
+{
+    "tasks": [
+        {"id": 1,"title": "Default task", "state": "Backlog", "src": "","tags": [{"title": "Concept", "colorBg": "#DEE9FC", "colorFont" : "#3662E3" }]}
+    ]
+}
+   

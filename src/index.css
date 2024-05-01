@@ -2,18 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+html, body, #root {
   font-family: "DM Sans", sans-serif;
   height: 100%;
 
 }
 
 html.dark {
-  background-color: #030616;
+  background-color: #191B1F;
   color: #FEF7EE;
 }
 
 html.light {
   background-color: #FEF7EE;
-  color: #030616;
+  color: #191B1F;
 }

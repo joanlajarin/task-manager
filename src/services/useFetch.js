@@ -1,18 +1,19 @@
 import {useEffect, useState} from "react"
 
 
-export function useEffect() {
+export function useFetch() {
 
     const [urlPhoto, setUrlPhoto] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const url = "https://api.unsplash.com/photos/random?client_id=YOUR_ACCESS_KEY'"
+    const url = `http://localhost:8000/urlphoto`
 
     useEffect(() => {
+        console.log("Searching for a photo")
         setLoading(true)
         fetch(url)
             .then((response) => response.json())
-            .then((data) => { setUrlPhoto(data.urls.regular)})
+            .then((data) => { setUrlPhoto(data)})
             .finally(() => setLoading(false))
     },[])
 

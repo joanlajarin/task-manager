@@ -1,5 +1,5 @@
 import addTask from '../images/Add_round.svg'
-import { ModalTaskDetailsContext } from './ModalTaskDetailsContext'
+import { ModalTaskDetailsContext } from '../context/ModalTaskDetailsContext'
 import { useContext, useState } from 'react'
 
 export function AddNewTask() {

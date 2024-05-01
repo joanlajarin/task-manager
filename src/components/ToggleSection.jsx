@@ -3,7 +3,7 @@ import moonFillWhiteImg from '../images/Moon_fill_white.svg'
 import sunFillBlackImg from '../images/Sun_fill_black.svg'
 import sunFillWhiteImg from '../images/Sun_fill_white.svg'
 
-import { DarkModeContext } from './DarkModeContext'
+import { DarkModeContext } from '../context/DarkModeContext'
 import { useContext, useState } from 'react'
 
 export function ToggleSection() {

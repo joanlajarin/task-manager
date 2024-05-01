@@ -1,30 +1,37 @@
 import doneImg from '../images/Done_round.svg'
 import closeImg from '../images/Close_round.svg'
-import { ModalTaskDetailsContext } from './ModalTaskDetailsContext.jsx'
+import { ModalTaskDetailsContext } from '../context/ModalTaskDetailsContext.jsx'
 import { useContext, useState } from 'react'
 import Tag from './Tag.jsx'
 import statesJSON from '../data/states.json'
 import tagsJSON from '../data/tags.json'
 import {getUniqueId} from '../services/getUniqueID.js'
+import { ImgBackground } from './ImgBackground.jsx'
 
-export function TaskDetails(){
+export function TaskDetails({ task = { id: "", title: "Add a feature to sort task by priority", state: "Backlog", src: "", tags: tagsJSON.tags } }){
+
+    const color =   task.state === 'Backlog' ?  "#5aafed" : 
+                    task.state === 'In progress' ? "#edcd5a" : 
+                    task.state === 'In review' ? '#d852e7' :'#52eb55'
 
     const {toggleShowTaskDetails} = useContext(ModalTaskDetailsContext)
-   
-    //task details
-    const [titleTask, setTitleTask] = useState("Add a feature to sort task by priority")
-    const [imgUrl, setImgUrl] = useState("")
+    const [showButtons, setShowButtons ] = useState(false)
+    
+    const [titleTask, setTitleTask] = useState(task.title)
+    const [imgUrl, setImgUrl] = useState(task.src)
+    const [searchPhoto, setSearchPhoto] = useState(false)
     //Status
     const [showStatus, setShowStatus] = useState(false)
-    const [statusValue, setStatusValue] = useState("Backlog")
-    const [statusColor, setStatusColor] = useState("#5aafed")
+    const [statusValue, setStatusValue] = useState(task.state)
+    const [statusColor, setStatusColor] = useState(color)
     //Tags
     const [showTags, setShowTags] = useState(false)
-    const [tagsSelected, setTagsSelected] = useState(tagsJSON.tags)
+    const [tagsSelected, setTagsSelected] = useState(task.tags)
 
+    
     const saveTaskDetails = () => {
-        const id = getUniqueId()
 
+        const id = task.id === "" ? getUniqueId() : task.id
         const newTask = {
             "id": id,
             "title": titleTask, 
@@ -32,7 +39,7 @@ export function TaskDetails(){
             "src": imgUrl,
             "tags": tagsSelected       
          }
-         localStorage.setItem(titleTask + id, JSON.stringify(newTask))
+         localStorage.setItem(id, JSON.stringify(newTask))
          toggleShowTaskDetails()
     }
 
@@ -45,9 +52,7 @@ export function TaskDetails(){
         setShowTags(!showTags)
         setShowStatus(false)
     }
-
     const handleChange = (event) => setTitleTask(event.target.value) 
-
 
     const selectSatus = (title, color) => {
         setStatusValue(title)
@@ -72,8 +77,21 @@ export function TaskDetails(){
         }
     }
     
+    const getRandomPhoto = () => {
+        setSearchPhoto(true)
+      }
+
+        
+    const removePhoto = () => {
+        setImgUrl("")
+    }
+
+    const showButtonsHandler = () => {
+        setShowButtons(!showButtons)
+    }
+
     return (
-        <section className="absolute  inset-0 flex justify-center items-center">
+        <section className="absolute  inset-0 flex justify-center items-center opacity-100">
             <div className="w-[550px] bg-[#2A2D32] p-[32px] rounded-xl flex flex-col gap-[24px]">
                 <div className='flex justify-between'> 
                     <h1 className="text-[20px] font-semibold">Task Details</h1>
@@ -83,13 +101,28 @@ export function TaskDetails(){
                         <img src={closeImg}></img>
                     </button>
                 </div>
-                <div className="bg-[#3A3E44] rounded-xl h-[120px] flex justify-center items-center">
-                {
-                    imgUrl ?  <img src={imgUrl}></img>
+                <div 
+                    className="relative bg-[#3A3E44] rounded-xl h-[140px] flex justify-center items-center overflow-hidden	"
+                    onMouseEnter={showButtonsHandler}
+                    onMouseLeave={showButtonsHandler}
+                >
+                {   
+                    imgUrl !== "" ? <img src={imgUrl}></img> :
+                    searchPhoto === true ?  <ImgBackground onReceivePhoto={(photoUrl) => setImgUrl(photoUrl)}/>
                     :
                     <span className='text-[#7E878D] font-semibold text-[20px]'>No cover photo</span>
 
                 }
+                <div className={`${showButtons ? 'block' : 'hidden'}  absolute flex flex-row gap-[8px]`}>
+                    <button 
+                        className='flex rounded-3xl font-semibold justify-between text-[#DEE9FC] bg-[#3662E3] px-[24px] py-[8px]'
+                        onClick={getRandomPhoto}
+                    >Random Cover</button>
+                    <button 
+                        className='flex rounded-3xl font-semibold justify-between text-[#DEE9FC] bg-[#AA2E26] px-[24px] py-[8px]'
+                        onClick={removePhoto}
+                    >Remove</button>
+                </div>
                 </div>
                 <div className="flex flex-col gap-[12px]">
                     <span className='text-[#7E878D] text-[12px]'>Task name</span>

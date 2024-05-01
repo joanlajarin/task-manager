@@ -107,10 +107,9 @@ export function TaskDetails({ task = { id: "", title: "Add a feature to sort tas
                     onMouseLeave={showButtonsHandler}
                 >
                 {   
-                    imgUrl !== "" ? <img src={imgUrl}></img> :
-                    searchPhoto === true ?  <ImgBackground onReceivePhoto={(photoUrl) => setImgUrl(photoUrl)}/>
-                    :
-                    <span className='text-[#7E878D] font-semibold text-[20px]'>No cover photo</span>
+                    searchPhoto === true ?  <ImgBackground onReceivePhoto={(photoUrl) => setImgUrl(photoUrl)}/> :
+                    imgUrl !== "" && searchPhoto === false  ?  <img src={imgUrl}></img> 
+                    : <span className='text-[#7E878D] font-semibold text-[20px]'>No cover photo</span>
 
                 }
                 <div className={`${showButtons ? 'block' : 'hidden'}  absolute flex flex-row gap-[8px]`}>

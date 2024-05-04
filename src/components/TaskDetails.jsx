@@ -37,7 +37,8 @@ export function TaskDetails({ task = { id: "", title: "Add a feature to sort tas
             "title": titleTask, 
             "state": statusValue, 
             "src": imgUrl,
-            "tags": tagsSelected       
+            "tags": tagsSelected ,
+            "type": 'task'     
          }
          localStorage.setItem(id, JSON.stringify(newTask))
          toggleShowTaskDetails()

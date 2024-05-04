@@ -36,7 +36,7 @@ export default function Task({task}){
     >
         {src && 
             <div
-                className='h-[100px] overflow-hidden'
+                className='h-[100px] flex justify-center items-center overflow-hidden'
             >
                 <img 
                     src={src}

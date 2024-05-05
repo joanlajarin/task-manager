@@ -30,7 +30,7 @@ export function Column({ column, tasks , updateBoard}) {
             > 
                 <div className="flex gap-[8px] items-center">
                     <div style={{ backgroundColor: `${column.color}`}} className='rounded-full size-[8px]'></div>
-                    <span>{`${column.title}(${ tasks ? tasks.length : 0})` }</span>
+                    <span className=" font-bold">{`${column.title}(${ tasks ? tasks.length : 0})` }</span>
                 </div>
                 {   tasks  ? 
                     tasks.map( (task,index) => <Task key={index} task={task}/> )

@@ -12,7 +12,7 @@ app.use(cors())
  app.get('/urlphoto', (req,res) => {
      const url = `https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_TASK_MANAGER_API_KEY}`
      console.log(url)
-     fetch(`${url}&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`)
+     fetch(url)
      .then((response) => response.json())
      .then((data) => {  res.json(data.urls.regular)})
  })

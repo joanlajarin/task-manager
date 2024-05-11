@@ -1,6 +1,7 @@
 import doneImg from '../images/Done_round.svg'
 import closeImg from '../images/Close_round.svg'
 import { ModalBoardDetailsContext } from '../context/ModalBoardDetailsContext.jsx'
+import { ShowTasksBoardByIdContext } from '../context/ShowTasksBoardByIdContext.jsx'
 import { useContext, useState } from 'react'
 import { getUniqueId } from '../services/getUniqueID.js'
 
@@ -10,6 +11,7 @@ export function BoardDetails({ board = { id: "", title: "", logo: ""} }){
     const [titleBoard, setTitleBoard] = useState(board.title)
     const [logoBoard, setLogoBoard] = useState(board.logo)
 
+    const {changeBoard}  = useContext(ShowTasksBoardByIdContext)
     
     const imageUrls = []
     // Generate image URLs dynamically (assuming you have a logic for this)
@@ -30,9 +32,11 @@ export function BoardDetails({ board = { id: "", title: "", logo: ""} }){
             "id": id,
             "title":titleBoard, 
             "logo": logoBoard !== "" ? logoBoard : getRandomFromArray(imageUrls),
-            "type": 'board'
+            "type": 'board',
+            "date": Date()   
          }
          localStorage.setItem(id, JSON.stringify(newBoard))
+         changeBoard(id)
          toggleShowBoardDetails()
     }
 

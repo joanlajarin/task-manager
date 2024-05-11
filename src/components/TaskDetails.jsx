@@ -7,8 +7,12 @@ import statesJSON from '../data/states.json'
 import tagsJSON from '../data/tags.json'
 import {getUniqueId} from '../services/getUniqueID.js'
 import { ImgBackground } from './ImgBackground.jsx'
+import { ShowTasksBoardByIdContext } from '../context/ShowTasksBoardByIdContext.jsx'
+
 
 export function TaskDetails({ task = { id: "", title: "Add a feature to sort task by priority", state: "Backlog", src: "", tags: tagsJSON.tags } }){
+
+    const {boardId}  = useContext(ShowTasksBoardByIdContext)
 
     const color =   task.state === 'Backlog' ?  "#5aafed" : 
                     task.state === 'In progress' ? "#edcd5a" : 
@@ -38,7 +42,9 @@ export function TaskDetails({ task = { id: "", title: "Add a feature to sort tas
             "state": statusValue, 
             "src": imgUrl,
             "tags": tagsSelected ,
-            "type": 'task'     
+            "type": 'task',
+            "board": boardId,  
+            "date": task.date === "" ? Date() : task.date    
          }
          localStorage.setItem(id, JSON.stringify(newTask))
          toggleShowTaskDetails()

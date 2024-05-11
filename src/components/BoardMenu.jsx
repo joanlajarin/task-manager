@@ -8,7 +8,7 @@ import { useContext } from 'react'
 export function BoardMenu({id, title, logo, compressMenu}) {
 
     const {darkMode}  = useContext(DarkModeContext)
-    const {changeBoard}  = useContext(ShowTasksBoardByIdContext)
+    const {boardId, changeBoard}  = useContext(ShowTasksBoardByIdContext)
 
     const changeBoardApp = () => {
         changeBoard(id)
@@ -16,7 +16,7 @@ export function BoardMenu({id, title, logo, compressMenu}) {
 
     return(
         <button
-            className="flex rounded-xl p-[8px] gap-[8px] items-center"
+            className={`${id === boardId ? 'border-2 border-blue-500' : ''} ${compressMenu ? 'rounded-full' : 'rounded-3xl'} flex p-[8px] gap-[8px] items-center`}
             onClick={changeBoardApp}
         >
             <img src={logo}></img>

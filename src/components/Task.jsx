@@ -46,8 +46,8 @@ export default function Task({task}){
             </div>
         }
         <span className='text-left	 text-ellipsis	 text-pretty '>{title}</span>
-        <div className='flex gap-[8px]'>
-            { tags.map((tag, index) => <Tag tag={tag} key={index} />)}
+        <div className='flex gap-[8px] flex-wrap'>
+        { tags.map((tag, index) => <Tag tag={tag} key={index} />)}
         </div>
     </button>
     )

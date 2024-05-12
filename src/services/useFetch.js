@@ -6,7 +6,8 @@ export function useFetch() {
     const [urlPhoto, setUrlPhoto] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const url = `http://localhost:8000/urlphoto`
+  //  const url = `http://localhost:8000/urlphoto`
+    const url = `https://task-manager-jv19.onrender.com/urlphoto`
 
     useEffect(() => {
         console.log("Searching for a photo")

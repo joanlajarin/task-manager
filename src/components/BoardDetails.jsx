@@ -16,7 +16,7 @@ export function BoardDetails({ board = { id: "", title: "", logo: ""} }){
     const imageUrls = []
     // Generate image URLs dynamically (assuming you have a logic for this)
     for (let i = 1; i < 14; i++) {
-        imageUrls.push(i < 10 ? `/board-logo-0${i}.svg` : `/board-logo-${i}.svg`);
+        imageUrls.push(i < 10 ? `/images/board-logo-0${i}.svg` : `/images/board-logo-${i}.svg`);
     }
     //chatgpt
     function getRandomFromArray(arr) {

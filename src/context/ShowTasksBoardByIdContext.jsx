@@ -10,14 +10,14 @@ function ShowTasksBoardByIdProvider(props) {
     //const allBoards = Object.values(localStorage).map(key => JSON.parse(localStorage.getItem(key)))
     //const allBoardsFiltered = allBoards.map(item => JSON.parse(item)).filter(item => item.type === 'board' || item.type === 'task')
     const allBoards = Object.keys(localStorage).map(key => JSON.parse(localStorage.getItem(key)));
-    const allBoardsFiltered = allBoards.filter(item => item.type === 'board' || item.type === 'task');
+    const allBoardsFiltered = allBoards.filter(item => item.type === 'board');
     let idBoard = 0;
     if(allBoardsFiltered.length === 0) {
         const boardId =  getUniqueId()
         const newBoard = {
             "id": boardId,
             "title":'Default Board', 
-            "logo": '/board-logo-13.svg',
+            "logo": '/images/board-logo-13.svg',
             "type": 'board',
             "date": Date()   
          }
@@ -42,6 +42,8 @@ function ShowTasksBoardByIdProvider(props) {
         // Get the first board found after sorting
         idBoard  = filteredBoards[0].id;
     }   
+
+
     const [boardId, setBoardId] = useState(idBoard)
     
     // useEffect(() => {
@@ -58,7 +60,8 @@ function ShowTasksBoardByIdProvider(props) {
     }, [idBoard])
 
     const changeBoard = (id) => {
-        setBoardId(id)
+            setBoardId(id)
+        
     }
 
     return (

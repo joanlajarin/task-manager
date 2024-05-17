@@ -17,14 +17,7 @@ export default function Task({task}){
         console.log("starting drag")
         event.dataTransfer.setData('text/plain', event.target.id);
     }
-
-    // useEffect(() => {
-    //     console.log(newStatus)
-    //     if(newStatus && newStatus !== "" ) {
-    //         console.log("has changed status")
-    //     }
-    // },[newStatus])
-
+    
     return(
     
         <button 

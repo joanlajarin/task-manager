@@ -1,6 +1,5 @@
 import Task from "./Task"
 import {AddNewTask} from './AddNewTask.jsx'
-import { useState } from "react"
 
 export function Column({ column, tasks , updateBoard}) {
 

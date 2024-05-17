@@ -17,7 +17,7 @@ function ShowTasksBoardByIdProvider(props) {
         const newBoard = {
             "id": boardId,
             "title":'Default Board', 
-            "logo": 'src/images/board-logo-13.svg',
+            "logo": '/board-logo-13.svg',
             "type": 'board',
             "date": Date()   
          }

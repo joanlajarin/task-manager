@@ -7,13 +7,6 @@ function DarkModeProvider(props) {
     const [darkMode, setDarkMode] = useState(true)
     localStorage.setItem('darkMode', true)
     document.documentElement.className = 'dark'
-    
-    useEffect(() => {
-        const isDark = localStorage.getItem('darkMode') === 'true'
-        setDarkMode(isDark)
-      }, [])
-    
-
 
       useEffect(() => {
         const className = darkMode ? 'dark' : 'light'

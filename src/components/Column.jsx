@@ -31,7 +31,7 @@ export function Column({ column, tasks , updateBoard}) {
                     <div style={{ backgroundColor: `${column.color}`}} className='rounded-full size-[8px]'></div>
                     <span className=" font-bold">{`${column.title}(${ tasks ? tasks.length : 0})` }</span>
                 </div>
-                {   tasks  ? 
+                {   tasks && tasks.length !== 0 ? 
                     tasks.map( (task,index) => <Task key={index} task={task}/> )
                     : <span className="text-[#7E878D] font-semibold">No tasks</span>
                 }

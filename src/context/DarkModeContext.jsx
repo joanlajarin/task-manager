@@ -12,7 +12,7 @@ function DarkModeProvider(props) {
       }, [])
     
       useEffect(() => {
-        localStorage.setItem('darkMode', darkMode)
+        localStorage.setItem('darkMode', true)
         const className = darkMode ? 'dark' : 'light'
         document.documentElement.className = className
       }, [darkMode])

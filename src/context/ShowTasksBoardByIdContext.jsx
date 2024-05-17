@@ -7,7 +7,7 @@ function ShowTasksBoardByIdProvider(props) {
     
     
             // Retrieve all items from localStorage
-    const allBoards = Object.values(localStorage);
+    const allBoards = Object.values(localStorage).filter(item => item.type === 'board' || item.type === 'task');
 
     let idBoard = 0;
     if(allBoards.length === 0) {

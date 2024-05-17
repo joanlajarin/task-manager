@@ -7,10 +7,12 @@ function ShowTasksBoardByIdProvider(props) {
     
     
             // Retrieve all items from localStorage
-    const allBoards = Object.values(localStorage).filter(item => item.type === 'board' || item.type === 'task');
-
+    //const allBoards = Object.values(localStorage).map(key => JSON.parse(localStorage.getItem(key)))
+    //const allBoardsFiltered = allBoards.map(item => JSON.parse(item)).filter(item => item.type === 'board' || item.type === 'task')
+    const allBoards = Object.keys(localStorage).map(key => JSON.parse(localStorage.getItem(key)));
+    const allBoardsFiltered = allBoards.filter(item => item.type === 'board' || item.type === 'task');
     let idBoard = 0;
-    if(allBoards.length === 0) {
+    if(allBoardsFiltered.length === 0) {
         const boardId =  getUniqueId()
         const newBoard = {
             "id": boardId,
@@ -34,7 +36,7 @@ function ShowTasksBoardByIdProvider(props) {
              }
              localStorage.setItem(taskId, JSON.stringify(newTask))
     } else {
-        const filteredBoards  = allBoards.map(board => JSON.parse(board)).filter(board => board.type === 'board')
+        const filteredBoards  = allBoards.filter(board => board.type === 'board')
         // Sort the filtered boards by date from older to newer
         filteredBoards.sort((a, b) => new Date(a.date) - new Date(b.date));
         // Get the first board found after sorting
